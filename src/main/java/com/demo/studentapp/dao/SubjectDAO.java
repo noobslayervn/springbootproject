@@ -1,44 +1,36 @@
 package com.demo.studentapp.dao;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.demo.studentapp.model.Subject;
 import com.demo.studentapp.repository.SubjectRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SubjectDAO {
-	
-	@Autowired
-	SubjectRepository subjectRepository;
-	
-	/*to save an employee*/
-	
-	public Subject save(Subject subject) {
-		return subjectRepository.save(subject);
-	}
-	
-	
-	/* search all employees*/
-	
-	public List<Subject> findAll(){
-		return subjectRepository.findAll();
-	}
-	
-	
-	/*get an employee by id*/
-	public Subject findOne(Long empid) {
-		return subjectRepository.findOne(empid);
-	}
-	
-	
-	/*delete an employee*/
-	
-	public void delete(Subject emp) {
-		subjectRepository.delete(emp);
-	}
-	
+
+    final
+    SubjectRepository subjectRepository;
+
+    public SubjectDAO(SubjectRepository subjectRepository) {
+        this.subjectRepository = subjectRepository;
+    }
+
+    public Subject save(Subject subject) {
+        return subjectRepository.save(subject);
+    }
+
+
+    public List<Subject> findAll() {
+        return subjectRepository.findAll();
+    }
+
+    public Subject findOne(Long empid) {
+        return subjectRepository.findOne(empid);
+    }
+
+    public void delete(Subject emp) {
+        subjectRepository.delete(emp);
+    }
 
 }
